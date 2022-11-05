@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 
-import { SituationService } from './domain/services/situation.service';
-import { SituationController } from './interface/situation.controller';
+import { SituationService } from './situation.service';
+import { SituationController } from './situation.controller';
 
 @Module({
     imports: [],
