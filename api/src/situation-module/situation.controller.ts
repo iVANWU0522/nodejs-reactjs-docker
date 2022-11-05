@@ -5,6 +5,7 @@ import {
     ApiResponse,
     ApiTags,
 } from '@nestjs/swagger';
+import { Like } from 'typeorm';
 
 import { SituationService } from './situation.service';
 import { SituationPaginationQueryDto } from './dto/situation.pagination.query.dto';
@@ -52,7 +53,7 @@ export class SituationController {
         };
 
         const findOptions = {
-            where: name ? { name: name } : {},
+            where: name ? { name: Like(`%${name}%`) } : {},
             sort: sortObject,
         };
 

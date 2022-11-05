@@ -41,3 +41,16 @@ INSERT INTO `situation_statistic` (`id`, `sid`, `job_id`, `headcount_year_1`, `h
 (7, 3, 'Accountant', 100, 202, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
 (8, 3, 'Clerk', 101, 200, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
 (9, 3, 'Manager', 110, 200, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL);
+
+create or replace view situation_list_view as
+select
+    s.id as id,
+    `name`,
+    SUM(ss.headcount_year_1) as headcount_year_1,
+    SUM(ss.headcount_year_2) as headcount_year_2,
+    SUM(ss.headcount_year_3) as headcount_year_3,
+    SUM(ss.headcount_year_4) as headcount_year_4
+    
+from situation s
+left join situation_statistic as ss on ss.sid = s.id
+group by s.id;
