@@ -1,0 +1,23 @@
+{
+    "verbose": true,
+    "preset": "ts-jest",
+    "globals": {
+        "ts-jest": {
+            "tsconfig": "tsconfig.test.json",
+            "diagnostics": true
+        }
+    },
+    "moduleDirectories": ["node_modules", "<rootDir>/node_modules", "."],
+    "setupFilesAfterEnv": ["<rootDir>/src/setupTests.ts"],
+    "collectCoverage": true,
+    "coverageReporters": ["json", "html"],
+    "coveragePathIgnorePatterns": ["<rootDir>/src/routes/"],
+    "testPathIgnorePatterns": ["/node_modules/"],
+    "moduleNameMapper": {
+        "\\.(jpg|jpeg|png|gif|eot|otf|webp|svg|ttf|woff|woff2|mp4|webm|wav|mp3|m4a|aac|oga)$": "<rootDir>/__mocks__/fileMock.js",
+        "\\.(css|less|scss)$": "<rootDir>/__mocks__/styleMock.js",
+        "^src(.*)$": "<rootDir>/src$1",
+        "src/components/App/AppMenu": "<rootDir>/__mocks__/AppMenu.js",
+        "src/constants": "<rootDir>/__mocks__/constants.js"
+    }
+}
