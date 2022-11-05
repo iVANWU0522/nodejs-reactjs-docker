@@ -1,7 +1,6 @@
 import { PaginationMetadata } from "./pagination-metadata.dto";
-import { Situation } from "../entity/situation.entity";
-
+import { TransformedSituation } from "../interface/transformed-situation.interface";
 export class SituationPaginationResponseDto {
-    data: Situation[];
+    data: TransformedSituation[];
     metadata: PaginationMetadata;
 }
