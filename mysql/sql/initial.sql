@@ -9,10 +9,12 @@ CREATE TABLE `situation` (
   PRIMARY KEY  (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
-INSERT INTO `situation` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`, `is_deleted`) VALUES
+INSERT INTO `situation` (`id`, `name`, `description`, `created_at`, `updated_at`, `deleted_at`) VALUES
 (1, 'Fast Technology Adoption', 'Global fast adoption of tech ...', '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
 (2, 'Climate Change', 'Climate change due to ....', '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
-(3, 'Economic Change', 'Economic down trending ...', '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL);
+(3, 'Economic Change', 'Economic down trending ...', '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(4, 'World War', 'World War ...', '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(5, 'Culture renovation', 'Culture renovation ...', '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL);
 
 DROP TABLE IF EXISTS `situation_statistic`;
 CREATE TABLE `situation_statistic` (
@@ -40,7 +42,13 @@ INSERT INTO `situation_statistic` (`id`, `sid`, `job_id`, `headcount_year_1`, `h
 (6, 2, 'Manager', 100, 200, 303, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
 (7, 3, 'Accountant', 100, 202, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
 (8, 3, 'Clerk', 101, 200, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
-(9, 3, 'Manager', 110, 200, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL);
+(9, 3, 'Manager', 110, 200, 300, 101, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(10, 4, 'Manager', 0, 5, 300, 250, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(11, 4, 'Clerk', 0, 100, 300, 400, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(12, 4, 'Accountant', 0.1, 200, 300, 100, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(13, 5, 'Accountant', 110, 200, 300, 777, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(14, 5, 'Clerk', 110, 200, 350, 888, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL),
+(15, 5, 'Manager', 110, 200, 130, 999, '2022-11-01 00:00:00', '2022-11-01 00:00:00', NULL);
 
 create or replace view situation_list_view as
 select
