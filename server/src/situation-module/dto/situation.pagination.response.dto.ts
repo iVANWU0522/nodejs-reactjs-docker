@@ -32,6 +32,9 @@ export class SituationListViewItem {
 }
 
 export class SituationPaginationResponseDto {
+    @ApiProperty({ type: [SituationListViewItem] })
     items: SituationListViewItem[];
+
+    @ApiProperty({ type: PaginationMetadata })
     meta: PaginationMetadata;
 }
