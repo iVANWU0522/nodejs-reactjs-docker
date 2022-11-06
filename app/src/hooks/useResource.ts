@@ -13,7 +13,8 @@ const useResource = <T>(
     path?: string,
     query?: Record<string, string>,
 ): SWRResponse<PaginatedResource<T>, Error> & {
-    setQueryState: (query: Record<string, string>) => void;
+    setQueryState: (query: Record<string, string>) => void,
+    query: Record<string, string> | undefined,
 } => {
     const [queryState, setQueryState] = useState(query);
     const matchMutate = useMatchMutate();
@@ -33,6 +34,7 @@ const useResource = <T>(
                 setQueryState(q);
             }
         },
+        query: queryState,
     };
 };
 

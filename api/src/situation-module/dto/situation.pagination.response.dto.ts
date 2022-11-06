@@ -32,6 +32,6 @@ export class SituationListViewItem {
 }
 
 export class SituationPaginationResponseDto {
-    data: SituationListViewItem[];
-    metadata: PaginationMetadata;
+    items: SituationListViewItem[];
+    meta: PaginationMetadata;
 }

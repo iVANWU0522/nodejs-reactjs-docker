@@ -1,6 +1,6 @@
 export interface PaginatedResource<T> {
     items: Array<T>,
-    metadata: {
+    meta: {
         currentPage: number;
         totalPages: number;
         itemCount: number;

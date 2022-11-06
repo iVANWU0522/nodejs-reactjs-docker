@@ -8,11 +8,13 @@ import {
 import ListSituations from './pages/situations.list.page';
 
 const App: React.FC = () => (
-    <BrowserRouter basename={process.env.PUBLIC_URL}>
-        <Routes>
-            <Route path="" element={<ListSituations />} />
-        </Routes>
-    </BrowserRouter>
-    );
+    <div className="App">
+        <BrowserRouter basename={process.env.PUBLIC_URL}>
+            <Routes>
+                <Route path="" element={<ListSituations />} />
+            </Routes>
+        </BrowserRouter>
+    </div>
+);
 
 export default App;

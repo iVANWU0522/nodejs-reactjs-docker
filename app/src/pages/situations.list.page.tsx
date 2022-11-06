@@ -1,13 +1,17 @@
+import 'rc-pagination/assets/index.css';
+
+import Pagination from 'rc-pagination';
 import React from 'react';
 
+import GridView from '../components/gridView/gridView';
 import useResource from '../hooks/useResource';
 import { SituationListView } from '../models/situationListView.model';
-import { StyledGrid } from './styledGrid';
 
 const ListSituations: React.FC = () => {
     const {
         data,
         setQueryState,
+        query,
         error,
     } = useResource<SituationListView>('/situations');
 
@@ -15,32 +19,18 @@ const ListSituations: React.FC = () => {
         return <div>Loading...</div>;
     }
 
+    const updatePage = (p:number) => {
+        console.log('updatePage', p);
+    };
+
     return (
-        <StyledGrid>
-            <h1>Situation Summary</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Situation</th>
-                        <th>HeadcouNt Yr 1</th>
-                        <th>HeadcouNt Yr 2</th>
-                        <th>HeadcouNt Yr 3</th>
-                        <th>HeadcouNt Yr 4</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {data.items.map((item) => (
-                        <tr>
-                            <td>{item.name}</td>
-                            <td>{item.headcount_year_1}</td>
-                            <td>{item.headcount_year_2}</td>
-                            <td>{item.headcount_year_3}</td>
-                            <td>{item.headcount_year_4}</td>
-                        </tr>
-                        ))}
-                </tbody>
-            </table>
-        </StyledGrid>
+        <>
+            <div className="heading">Situation Summary</div>
+            <GridView
+                data={data}
+                onQueryChange={(_query) => setQueryState({ ...query, ..._query })}
+            />
+        </>
     );
 };
 
