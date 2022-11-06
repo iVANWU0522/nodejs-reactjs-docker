@@ -5,7 +5,7 @@ import { SituationStatistic } from './situation-module/entity/situation-statisti
 import { SituationListView } from './situation-module/entity/situation-list.view';
 
 export const AppDataSource = new DataSource({
-    host: process.env.DATABASE_HOST || 'localhost',
+    host: process.env.MYSQL_HOST_IP || 'localhost',
     port: parseInt(process.env.DATABASE_PORT ?? '3306', 10) || 3306,
     database: process.env.DATABASE_NAME || 'situation',
     username: process.env.DATABASE_USER || 'root',
