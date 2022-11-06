@@ -1,7 +1,6 @@
 # Quick start 
 Run the following commands to start the server:
 
-    $ cd server
     $ npm install
     $ npm start
 
