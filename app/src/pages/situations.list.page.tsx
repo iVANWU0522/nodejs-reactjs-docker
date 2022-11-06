@@ -28,6 +28,7 @@ const ListSituations: React.FC = () => {
             <div className="heading">Situation Summary</div>
             <GridView
                 data={data}
+                query={query}
                 onQueryChange={(_query) => setQueryState({ ...query, ..._query })}
             />
         </>

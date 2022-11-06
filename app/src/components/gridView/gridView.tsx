@@ -13,9 +13,31 @@ const GridView = <T, >({
 } : PropsWithChildren<{
     data: PaginatedResource<T>,
     query?: Record<string, string>;
-    onQueryChange?: (query: Record<string, string>) => void;
+    onQueryChange: (query: Record<string, string>) => void;
 }>) => {
-    const [searchValue, setSearchValue] = useState('');
+    const [searchValue, setSearchValue] = useState(query?.name || '');
+
+    const sortIcon = (sortingColumn: string) => {
+        if (query?.sort === sortingColumn) {
+            return '⬆';
+        }
+        if (query?.sort === `-${sortingColumn}`) {
+            return '⬇';
+        }
+        return '️↕️';
+    };
+
+    const handleSort = (sortingColumn: string) => {
+        if (query?.sort === sortingColumn) {
+            onQueryChange({ ...query, sort: `-${sortingColumn}` });
+        }
+
+        if (query?.sort === `-${sortingColumn}`) {
+            onQueryChange({ ...query, sort: sortingColumn });
+        }
+
+        onQueryChange({ ...query, sort: `-${sortingColumn}` });
+    };
 
     return (
         <>
@@ -29,9 +51,7 @@ const GridView = <T, >({
                     type="button"
                     className="search-button"
                     onClick={() => {
-                        if (onQueryChange) {
-                            onQueryChange({ ...query, name: searchValue });
-                        }
+                        onQueryChange({ ...query, name: searchValue });
                     }}
                 >
                     Apply
@@ -40,28 +60,43 @@ const GridView = <T, >({
             <table>
                 <thead>
                     <tr>
-                        <th>Situation</th>
-                        <th>HeadcouNt Yr 1</th>
-                        <th>HeadcouNt Yr 2</th>
-                        <th>HeadcouNt Yr 3</th>
-                        <th>HeadcouNt Yr 4</th>
+                        <th>
+                            <span>Situation</span>
+                            <button type="button" onClick={() => handleSort('name')}>{sortIcon('name')}</button>
+                        </th>
+                        <th>
+                            <span>HeadcouNt Yr 1</span>
+                            <button type="button" onClick={() => handleSort('headcount_year_1')}>{sortIcon('headcount_year_1')}</button>
+                        </th>
+                        <th>
+                            <span>HeadcouNt Yr 2</span>
+                            <button type="button" onClick={() => handleSort('headcount_year_2')}>{sortIcon('headcount_year_2')}</button>
+                        </th>
+                        <th>
+                            <span>HeadcouNt Yr 3</span>
+                            <button type="button" onClick={() => handleSort('headcount_year_3')}>{sortIcon('headcount_year_3')}</button>
+                        </th>
+                        <th>
+                            <span>HeadcouNt Yr 4</span>
+                            <button type="button" onClick={() => handleSort('headcount_year_4')}>{sortIcon('headcount_year_4')}</button>
+                        </th>
                     </tr>
                 </thead>
                 <tbody>
                     {data.items.map((item: any) => (
                         <tr>
                             <td>{item.name}</td>
-                            <td>{item.headcount_year_1}</td>
-                            <td>{item.headcount_year_2}</td>
-                            <td>{item.headcount_year_3}</td>
-                            <td>{item.headcount_year_4}</td>
+                            <td>{item.headcount_year_1 >= 1 ? item.headcount_year_1 : 'N.A.'}</td>
+                            <td>{item.headcount_year_2 >= 1 ? item.headcount_year_2 : 'N.A.'}</td>
+                            <td>{item.headcount_year_3 >= 1 ? item.headcount_year_3 : 'N.A.'}</td>
+                            <td>{item.headcount_year_4 >= 1 ? item.headcount_year_4 : 'N.A.'}</td>
                         </tr>
                     ))}
                 </tbody>
             </table>
             <Pagination
                 pageSize={data.meta.itemsPerPage}
-                onChange={(pageNumber) => onQueryChange && onQueryChange({ ...query, page: String(pageNumber) })}
+                onChange={(pageNumber) => onQueryChange({ ...query, page: String(pageNumber) })}
                 current={data.meta.currentPage}
                 total={data.meta.totalItems}
             />
