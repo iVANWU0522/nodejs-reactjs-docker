@@ -61,23 +61,23 @@ const GridView = <T, >({
                 <thead>
                     <tr>
                         <th>
-                            <span>Situation</span>
+                            <span>Situation </span>
                             <button type="button" onClick={() => handleSort('name')}>{sortIcon('name')}</button>
                         </th>
                         <th>
-                            <span>HeadcouNt Yr 1</span>
+                            <span>HeadcouNt Yr 1 </span>
                             <button type="button" onClick={() => handleSort('headcount_year_1')}>{sortIcon('headcount_year_1')}</button>
                         </th>
                         <th>
-                            <span>HeadcouNt Yr 2</span>
+                            <span>HeadcouNt Yr 2 </span>
                             <button type="button" onClick={() => handleSort('headcount_year_2')}>{sortIcon('headcount_year_2')}</button>
                         </th>
                         <th>
-                            <span>HeadcouNt Yr 3</span>
+                            <span>HeadcouNt Yr 3 </span>
                             <button type="button" onClick={() => handleSort('headcount_year_3')}>{sortIcon('headcount_year_3')}</button>
                         </th>
                         <th>
-                            <span>HeadcouNt Yr 4</span>
+                            <span>HeadcouNt Yr 4 </span>
                             <button type="button" onClick={() => handleSort('headcount_year_4')}>{sortIcon('headcount_year_4')}</button>
                         </th>
                     </tr>
