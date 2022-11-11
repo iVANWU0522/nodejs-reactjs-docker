@@ -8,11 +8,11 @@ import {
 @Entity()
 export class BaseEntity {
     @CreateDateColumn()
-    created_at: Date = new Date();
+        created_at: Date = new Date();
 
     @UpdateDateColumn()
-    updated_at: Date = new Date();
+        updated_at: Date = new Date();
 
     @DeleteDateColumn()
-    deleted_at: Date | null = null;
+        deleted_at: Date | null = null;
 }

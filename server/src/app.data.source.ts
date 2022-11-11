@@ -1,8 +1,8 @@
-import { DataSource } from "typeorm";
+import { DataSource } from 'typeorm';
 
 import { Situation } from './situation-module/entity/situation.entity';
-import { SituationStatistic } from './situation-module/entity/situation-statistic.entity';
 import { SituationListView } from './situation-module/entity/situation-list.view';
+import { SituationStatistic } from './situation-module/entity/situation-statistic.entity';
 
 export const AppDataSource = new DataSource({
     host: process.env.MYSQL_HOST_IP || 'localhost',

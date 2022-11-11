@@ -1,6 +1,7 @@
-import { ApiProperty } from "@nestjs/swagger";
-import { Type } from "class-transformer";
-import { PaginationQueryDto } from "./pagination.query.dto";
+import { ApiProperty } from '@nestjs/swagger';
+import { Type } from 'class-transformer';
+
+import { PaginationQueryDto } from './pagination.query.dto';
 
 export class SituationPaginationQueryDto extends PaginationQueryDto {
     @ApiProperty({ example: 'Client Change' })

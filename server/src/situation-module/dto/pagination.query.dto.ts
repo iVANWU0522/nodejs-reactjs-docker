@@ -8,7 +8,7 @@ export class PaginationQueryDto {
     @Type(() => Number)
     @IsInt()
     @Min(0)
-    page = 1;
+        page = 1;
 
 
     @ApiProperty({ required: false, default: 2, minimum: 1 })
@@ -17,5 +17,5 @@ export class PaginationQueryDto {
     @Min(1)
     @Max(20)
     @Type(() => Number)
-    itemsPerPage = 2;
+        itemsPerPage = 2;
 }

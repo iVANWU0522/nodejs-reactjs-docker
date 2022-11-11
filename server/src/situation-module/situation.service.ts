@@ -1,11 +1,11 @@
 import { Injectable } from '@nestjs/common';
+import * as _ from 'lodash';
 import { IPaginationOptions, paginate, Pagination } from 'nestjs-typeorm-paginate';
 import { FindManyOptions } from 'typeorm';
-import * as _ from 'lodash';
 
 import { AppDataSource } from '../app.data.source';
-import { SituationListView } from './entity/situation-list.view';
 import { SituationListViewItem } from './dto/situation.pagination.response.dto';
+import { SituationListView } from './entity/situation-list.view';
 
 interface FindOptions extends FindManyOptions<SituationListView> {
     sort?: Partial<Record<string, 'ASC' | 'DESC'>>;
@@ -16,7 +16,7 @@ export class SituationService {
     private situationRepository = AppDataSource.getRepository(SituationListView);
 
     async findAll(): Promise<Array<any>> {
-        return await this.situationRepository.find();
+        return this.situationRepository.find();
     }
    
     async paginate(options: IPaginationOptions, findOptions: FindOptions): Promise<Pagination<SituationListViewItem>> {

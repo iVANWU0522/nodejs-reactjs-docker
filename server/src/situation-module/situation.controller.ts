@@ -7,10 +7,10 @@ import {
 } from '@nestjs/swagger';
 import { Like } from 'typeorm';
 
-import { SituationService } from './situation.service';
 import { SituationPaginationQueryDto } from './dto/situation.pagination.query.dto';
 import { SituationPaginationResponseDto } from './dto/situation.pagination.response.dto';
 import { ResponseDescription } from './enum/response-description';
+import { SituationService } from './situation.service';
 
 @ApiTags('Situation')
 @Controller('situations')
@@ -58,5 +58,5 @@ export class SituationController {
         };
 
         return await this.SituationService.paginate(options, findOptions) as any;
-    };
+    }
 }
